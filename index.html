@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style type="text/css">@-ms-viewport{width:device-width}</style>
+    <title>viewportSize</title>
+    <link rel="stylesheet" type="text/css" href="samples/css/main.css" />
+    <script type="text/javascript" src="viewportSize.js"></script>
+</head>
+<body>
+    <div class="info">
+        <h1>viewportSize</h1>
+        <h2>example</h2>
+        <p>A cross browser way to obtain the CSS viewport size using JavaScript. Resize your viewport and toggle the scroll bars to see it work.</p>
+    </div>
+
+    <a id="toggle-scroll">Toggle Scroll Bars</a>
+
+    <div class="output">
+        <div class="row main">viewportSize.getWidth() = <span id="widthEl" class="value">Requires JavaScript</span></div>
+        <div class="row">window.innerWidth = <span id="innerWidthEl" class="value">Requires JavaScript</span></div>
+        <div class="row">documentElement.clientWidth = <span id="clientWidthEl" class="value">Requires JavaScript</span></div>
+    </div>
+
+    <div class="output">
+        <div class="row main">viewportSize.getHeight() = <span id="heightEl" class="value">Requires JavaScript</span></div>
+        <div class="row">window.innerHeight = <span id="innerHeightEl" class="value">Requires JavaScript</span></div>
+        <div class="row">documentElement.clientHeight = <span id="clientHeightEl" class="value">Requires JavaScript</span></div>
+    </div>
+
+    <script type="text/javascript">
+        var scroll_link = document.getElementById("toggle-scroll");
+        var toggleScroll = function () {
+            if (document.documentElement.style.overflow == "hidden") {
+                document.documentElement.style.overflow = "scroll";
+            } else {
+                document.documentElement.style.overflow = "hidden";
+            }
+            updateValues();
+        };
+        scroll_link.onclick = toggleScroll;
+
+        var width_el = document.getElementById("widthEl");
+        var height_el = document.getElementById("heightEl");
+        var innerWidth_el = document.getElementById("innerWidthEl");
+        var clientWidth_el = document.getElementById("clientWidthEl");
+        var innerHeight_el = document.getElementById("innerHeightEl");
+        var clientHeight_el = document.getElementById("clientHeightEl");
+
+        var updateValues = function () {
+            var width = viewportSize.getWidth();
+            var height = viewportSize.getHeight();
+            var innerWidth = window.innerWidth;
+            var clientWidth = document.documentElement.clientWidth;
+            var innerHeight = window.innerHeight;
+            var clientHeight = document.documentElement.clientHeight;
+
+            width_el.innerHTML = width;
+            height_el.innerHTML = height;
+            innerWidth_el.innerHTML = innerWidth;
+            clientWidth_el.innerHTML = clientWidth;
+            innerHeight_el.innerHTML = innerHeight;
+            clientHeight_el.innerHTML = clientHeight;
+
+            innerWidth_el.style.backgroundColor = (width == innerWidth) ? "green" : "red";
+            clientWidth_el.style.backgroundColor = (width == clientWidth) ? "green" : "red";
+            innerHeight_el.style.backgroundColor = (height == innerHeight) ? "green" : "red";
+            clientHeight_el.style.backgroundColor = (height == clientHeight) ? "green" : "red";
+        };
+
+        if (window.addEventListener) {
+            window.addEventListener("resize", updateValues, false);
+            window.addEventListener("DOMContentLoaded", updateValues, false);
+            window.addEventListener("load", updateValues, false);
+        }
+        else if (window.attachEvent) {
+            window.attachEvent("onload", updateValues);
+        }
+    </script>
+
+    <h3>Code sample</h3>
+    <code><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
+    <span class="nb">var</span> <span class="nb">width</span> <span class="p">=</span> <span class="nx">viewportSize</span><span class="p">.</span><span class="nx">getWidth</span><span class="p">();</span>
+    <span class="nb">var</span> <span class="nb">height</span> <span class="p">=</span> <span class="nx">viewportSize</span><span class="p">.</span><span class="nx">getHeight</span><span class="p">();</span>
+<span class="nt">&lt;/script&gt;</span></code>
+
+    <div class="info" style="margin-top: 1.5em;">
+        <p>Need more info? <a href="http://github.com/tysonmatanich/viewportSize">View the project</a><br />Author: <a href="http://www.matanich.com">Tyson Matanich</a></p>
+    </div>
+</body>
+</html>
