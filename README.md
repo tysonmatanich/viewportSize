@@ -11,7 +11,7 @@ Demo: http://matanich.com/test/viewport-width/
 
 More Info: http://www.matanich.com/2013/01/07/viewport-size/
 
-Test: http://tysonmatanich.github.com/viewportSize/
+Test: http://tysonmatanich.github.io/viewportSize/
 
 
 ## Why should I use it?
